@@ -1,0 +1,71 @@
+{
+  "name": "revana",
+  "version": "0.1.0",
+  "description": "Official Revana SDK and CLI: one API key for Seedance, Veo, Kling, Nano Banana, GPT Image, Wan, Hailuo and 200+ image, video, music and chat models. Cheapest route first, automatic fallback, failed generations are free.",
+  "keywords": [
+    "revana",
+    "ai",
+    "video-generation",
+    "image-generation",
+    "seedance",
+    "seedance-2.5",
+    "veo",
+    "veo3",
+    "kling",
+    "nano-banana",
+    "gpt-image",
+    "wan",
+    "hailuo",
+    "minimax",
+    "text-to-video",
+    "image-to-video",
+    "text-to-image",
+    "api",
+    "sdk"
+  ],
+  "homepage": "https://revana.si/docs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aribk7/revana-js.git"
+  },
+  "bugs": "https://github.com/Aribk7/revana-js/issues",
+  "license": "MIT",
+  "author": "Revana <hello@revana.si> (https://revana.si)",
+  "type": "module",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/cjs/index.d.ts",
+        "default": "./dist/cjs/index.js"
+      }
+    }
+  },
+  "bin": {
+    "revana": "./dist/esm/cli.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18.17"
+  },
+  "sideEffects": false,
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.json && tsc -p tsconfig.cjs.json && echo '{\"type\":\"commonjs\"}' > dist/cjs/package.json && chmod +x dist/esm/cli.js",
+    "test": "node --test test/*.test.*",
+    "prepublishOnly": "npm run build && npm test"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0",
+    "@types/node": "^22.0.0"
+  }
+}
